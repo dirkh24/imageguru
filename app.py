@@ -34,7 +34,7 @@ if not os.path.exists(directory):
 
 # ======== Helper functions =========================================================== #
 # -------- predict an image ----------------------------------------------------------- #
-def model_predict(img_path, model):
+def model_predict(img_path):
     print("model_predict")
     model = ResNet50(weights='imagenet')
     print("model loaded")
