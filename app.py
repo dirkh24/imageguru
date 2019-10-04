@@ -12,6 +12,7 @@ import numpy as np
 from keras.applications.imagenet_utils import preprocess_input, decode_predictions
 from keras.models import load_model
 from keras.preprocessing import image
+from keras.applications.resnet50 import ResNet50
 
 # Flask utils
 from flask import Flask, redirect, url_for, render_template, request, session
@@ -25,9 +26,10 @@ app.secret_key = os.urandom(12)  # Generic key for dev purposes only
 # Heroku environment variable configurations for Flask.
 #from flask_heroku import Heroku
 #heroku = Heroku(app)
+directory = "./uploads"
 
-from keras.applications.resnet50 import ResNet50
-
+if not os.path.exists(directory):
+    os.makedirs(directory)
 
 # ======== Helper functions =========================================================== #
 # -------- predict an image ----------------------------------------------------------- #
