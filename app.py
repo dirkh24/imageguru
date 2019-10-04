@@ -18,6 +18,8 @@ from keras.applications.resnet50 import ResNet50
 from flask import Flask, redirect, url_for, render_template, request, session
 from werkzeug.utils import secure_filename
 
+from clarifai.rest import ClarifaiApp
+
 app = Flask(__name__)
 app.secret_key = os.urandom(12)  # Generic key for dev purposes only
 
@@ -31,6 +33,11 @@ directory = "./uploads"
 if not os.path.exists(directory):
     print("make dir: " + directory)
     os.makedirs(directory)
+
+# Create your API key in your account's Application details page:
+# https://clarifai.com/apps
+clarifai_app = ClarifaiApp()
+
 
 # ======== Helper functions =========================================================== #
 # -------- predict an image ----------------------------------------------------------- #
@@ -137,13 +144,28 @@ def upload():
 
         # Make prediction
         #preds = model_predict(file_path, model)
-        preds = model_predict(file_path)
+        #preds = model_predict(file_path)
 
+        # make the predictions with clarifai
+        model = clarifai_app.public_models.general_model
+        response = model.predict_by_filename(file_path)
+        print(response)
+        result = []
+        # ToDo: hier passiert ein wunder !!!
+        items = response['outputs'][0]['data']['concepts']
+        for item in items:
+            #print(item)
+            if item['value'] > 0.9:
+                print(item['name'] + " : " + str(int(item['value']*100)))
+                result.append(item['name'])
+        #result = response
         # Process your result for human
-        # pred_class = preds.argmax(axis=-1)            # Simple argmax
-        pred_class = decode_predictions(preds, top=1)   # ImageNet Decode
-        result = str(pred_class[0][0][1])               # Convert to string
-        return result
+        #pred_class = preds.argmax(axis=-1)            # Simple argmax
+        #pred_class = decode_predictions(preds, top=1)   # ImageNet Decode
+        #result = str(pred_class[0][0][1])               # Convert to string
+        #print(result)
+        #print(decode_predictions(preds))
+        return ", ".join(result)
     return None
 
 

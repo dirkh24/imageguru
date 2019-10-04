@@ -81,6 +81,17 @@ $(document).ready(function () {
                 $('#result').fadeIn(600);
                 $('#result').text(' Result:  ' + data);
                 console.log('Success!');
+                function speak(data) {
+                    console.log("speak")
+	                var msg = new SpeechSynthesisUtterance();
+	                msg.text = data;
+	                msg.lang = 'en-US';
+	                msg.volume = 1; // 0 to 1
+	                msg.rate = 1; // 0.1 to 10
+	                msg.pitch = 2; //0 to 2
+	                speechSynthesis.speak(msg);
+                }
+                speak(data);
             },
         });
     });
