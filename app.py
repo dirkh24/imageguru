@@ -29,12 +29,16 @@ app.secret_key = os.urandom(12)  # Generic key for dev purposes only
 directory = "./uploads"
 
 if not os.path.exists(directory):
+    print("make dir: " + directory)
     os.makedirs(directory)
 
 # ======== Helper functions =========================================================== #
 # -------- predict an image ----------------------------------------------------------- #
 def model_predict(img_path, model):
     print("model_predict")
+    model = ResNet50(weights='imagenet')
+    print("model loaded")
+
     img = image.load_img(img_path, target_size=(224, 224))
 
     # Preprocessing the image
@@ -47,6 +51,7 @@ def model_predict(img_path, model):
     x = preprocess_input(x, mode='caffe')
 
     preds = model.predict(x)
+    del model, img, x
     return preds
 
 # ======== Routing =========================================================== #
@@ -120,8 +125,6 @@ def settings():
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
     print("upload")
-    model = ResNet50(weights='imagenet')
-    print("model loaded")
     if request.method == 'POST':
         # Get the file from post request
         f = request.files['image']
@@ -133,7 +136,8 @@ def upload():
         f.save(file_path)
 
         # Make prediction
-        preds = model_predict(file_path, model)
+        #preds = model_predict(file_path, model)
+        preds = model_predict(file_path)
 
         # Process your result for human
         # pred_class = preds.argmax(axis=-1)            # Simple argmax
