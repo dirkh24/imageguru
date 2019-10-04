@@ -32,6 +32,7 @@ from keras.applications.resnet50 import ResNet50
 # ======== Helper functions =========================================================== #
 # -------- predict an image ----------------------------------------------------------- #
 def model_predict(img_path, model):
+    print("model_predict")
     img = image.load_img(img_path, target_size=(224, 224))
 
     # Preprocessing the image
@@ -50,6 +51,7 @@ def model_predict(img_path, model):
 # -------- Login ------------------------------------------------------------- #
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    print("login")
     if not session.get('logged_in'):
         form = forms.LoginForm(request.form)
         if request.method == 'POST':
@@ -69,6 +71,7 @@ def login():
 
 @app.route("/logout")
 def logout():
+    print("logout")
     session['logged_in'] = False
     return redirect(url_for('login'))
 
@@ -76,6 +79,7 @@ def logout():
 # -------- Signup ---------------------------------------------------------- #
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    print("signup")
     if not session.get('logged_in'):
         form = forms.LoginForm(request.form)
         if request.method == 'POST':
@@ -97,6 +101,7 @@ def signup():
 # -------- Settings ---------------------------------------------------------- #
 @app.route('/settings', methods=['GET', 'POST'])
 def settings():
+    print("settings")
     if session.get('logged_in'):
         if request.method == 'POST':
             password = request.form['password']
@@ -112,7 +117,9 @@ def settings():
 # -------- upload ---------------------------------------------------------- #
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
+    print("upload")
     model = ResNet50(weights='imagenet')
+    print("model loaded")
     if request.method == 'POST':
         # Get the file from post request
         f = request.files['image']
