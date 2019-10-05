@@ -128,6 +128,18 @@ def settings():
         return render_template('settings.html', user=user)
     return redirect(url_for('login'))
 
+
+# -------- Login ------------------------------------------------------------- #
+@app.route('/analyze', methods=['GET', 'POST'])
+def analyze():
+    print("analyze")
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    else:
+        user = helpers.get_user()
+        return render_template('analyze.html', user=user)
+
+
 # -------- upload ---------------------------------------------------------- #
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
