@@ -166,7 +166,12 @@ def analyze():
         username, paid_plan = info
         print(info)
         # ToDo: here we have to check if the user has paid and is allowed
-        # ToDo: or if he has the free plan and save the number
+        if not paid_plan:
+            print("Free Plan")
+            # ToDo: or if he has the free plan and save the number
+        else:
+            print("Premium Plan")
+
         return render_template('analyze.html', user=user)
 
 
@@ -195,7 +200,8 @@ def pay():
                                   description='Premium Plan')
 
     # ToDo: we need to save the payment for the user
-    helpers.set_plan()
+    user = helpers.get_user()
+    helpers.set_plan(user.username)
     return redirect(url_for('analyze'))
 
 # -------- upload ---------------------------------------------------------- #

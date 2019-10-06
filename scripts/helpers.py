@@ -70,8 +70,11 @@ def username_taken(username):
 
 
 # set the boolean, when user has paid the plan
-def set_plan(paid):
-    pass
+def set_plan(username):
+    print("set_plan")
+    with session_scope() as s:
+        s.query(tabledef.User).filter(tabledef.User.username == username).update({tabledef.User.paid_plan: True}, synchronize_session=False)
+        s.commit()
 
 
 # get the plan of the current user
