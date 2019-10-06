@@ -5,11 +5,40 @@
 <section class="hero is-primary is-bold is-small">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <div id="upload" class="upload-box">
-            <div class="upload-area">
-                <h1 class="title">Choose a plan to proceed</h1>
+    <h2 class="title">Choose a Plan!</h2>
+
+    <div class="row">
+        <div class="column" style="background-color:#DCD7FF;">
+            <h2>Free plan</h2>
+            <p>• Analyze two images per day</p>
+            <p>• Analyze images up to 1 MB</p>
+            <div>
+                <button type="button"  onClick="self.location.href='http://127.0.0.1:5000/analyze'" class="btn btn-primary btn-lg" id="btn-start">Start Analyzing!</button>
             </div>
-      </div>
+        </div>
+
+        <div class="column" style="background-color:#DCD5DF;">
+            <h2>Premium Plan</h2>
+            <p>• Analyze unlimted images</p>
+            <p>• No limit for pictures</p>
+
+            <form action="{{ url_for('pay') }}" method="POST">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="{{ pub_key }}"
+                    data-description="Buy a premium plan"
+                    data-amount="{{amount}}"
+                    data-email="{{ email }}"
+                    data-locale="auto">
+                </script>
+                <script>
+                // Hide default stripe button, be careful there if you
+                // have more than 1 button of that class
+                    document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+                </script>
+                <button type="submit" class="btn btn-primary btn-lg" id="btn-premium">Premium Plan</button>
+            </form>
+        </div>
+    </div>
     </div>
   </div>
 </section>

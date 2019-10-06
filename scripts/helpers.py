@@ -3,6 +3,7 @@
 from scripts import tabledef
 from flask import session
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import select
 from contextlib import contextmanager
 import bcrypt
 
@@ -66,3 +67,18 @@ def credentials_valid(username, password):
 def username_taken(username):
     with session_scope() as s:
         return s.query(tabledef.User).filter(tabledef.User.username.in_([username])).first()
+
+
+# set the boolean, when user has paid the plan
+def set_plan(paid):
+    pass
+
+
+# get the plan of the current user
+def get_plan(username):
+    print("get_plan")
+    with session_scope() as s:
+        #query = s.query(tabledef.User).filter(tabledef.User.username.in_([username])).all()
+        #query = s.query(tabledef.User).filter(tabledef.User.username == username)
+        result = s.execute(select([tabledef.User.username, tabledef.User.paid_plan]).where(tabledef.User.username == username))
+        return result.first()
