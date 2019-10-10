@@ -27,7 +27,7 @@ from clarifai.rest import ClarifaiApp
 # Stripe API
 import stripe
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.secret_key = os.urandom(12)  # Generic key for dev purposes only
 
 # featuretoggle (to choose between the own or pretrained model and the api)
