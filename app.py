@@ -8,6 +8,7 @@ import json
 import sys
 import os
 import numpy as np
+import datetime
 
 # Keras
 from keras.applications.imagenet_utils import preprocess_input, decode_predictions
@@ -184,7 +185,10 @@ def analyze():
             # get the time of the last anlayzed image
             # get last_uploaded time
             # analyzed time older than max_time
-
+            print(helpers.get_last_image(user.username))
+            username, last_image = helpers.get_last_image(user.username)
+            if (datetime.datetime.utcnow() - datetime.timedelta(seconds=120)) < last_image:
+                return redirect(url_for('login'))
         else:
             print("Premium Plan")
 
@@ -227,11 +231,11 @@ def upload():
 
     # save the prediction
     user = helpers.get_user()
-    helpers.save_prediction(user.username)
 
     # ToDo: set last_uploaded
     # if free plan
     # set last_uploaded time to actual time
+    helpers.set_last_image(user.username)
 
     if request.method == 'POST':
         # Get the file from post request

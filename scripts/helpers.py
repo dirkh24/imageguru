@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy import select
 from contextlib import contextmanager
 import bcrypt
-
+import datetime
 
 @contextmanager
 def session_scope():
@@ -75,15 +75,14 @@ def get_plan(username):
         result = s.execute(select([tabledef.User.username, tabledef.User.paid_plan]).where(tabledef.User.username == username))
         return result.first()
 
-# save a prediction
-def save_prediction(username):
-
-    pass
-
-# return if the user is allowed to analyze a image
-def is_allowed(username):
-    # session.query(Ticker).order_by(desc('updated')).first()
-    # User.query.join(Skill).filter(Skill.skill == skill_name).all()
-    print("is_allowed")
+def set_last_image(username):
+    print("set_last_image")
     with session_scope() as s:
-        s.query(tabledef.User).join(tabledef.Images).filter(tabledef.User.username == username)
+        s.query(tabledef.User).filter(tabledef.User.username == username).update({tabledef.User.last_image: datetime.datetime.utcnow()}, synchronize_session=False)
+        s.commit()
+
+def get_last_image(username):
+    print("get_last_image")
+    with session_scope() as s:
+        result = s.execute(select([tabledef.User.username, tabledef.User.last_image]).where(tabledef.User.username == username))
+        return result.first()

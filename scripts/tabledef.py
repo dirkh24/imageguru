@@ -32,18 +32,10 @@ class User(Base):
     password = Column(String(512))
     email = Column(String(50))
     paid_plan = Column(Boolean, default=False)  # is true for paid plan
-    images_processed = relationship("Images")
+    last_image = Column(DateTime)
 
     def __repr__(self):
         return '<User %r>' % self.username
-
-
-class Images(Base):
-    __tablename__ = "images"
-
-    id = Column(Integer, primary_key=True)
-    uploaded = Column(DateTime(timezone=True), default=func.now())
-    user_id = Column(Integer, ForeignKey('user.id'))
 
 engine = db_connect()  # Connect to database
 Base.metadata.create_all(engine)  # Create models
