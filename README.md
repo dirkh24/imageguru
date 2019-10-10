@@ -2,23 +2,21 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![Python](https://img.shields.io/badge/python-v3.6-blue.svg)
-![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)
-[![GitHub Issues](https://img.shields.io/github/issues/anfederico/flaskex.svg)](https://github.com/anfederico/flaskex/issues)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-<br><br>
+# Imageguru
 
-## Features
-- Encrypted user authorizaton
-- Database initialization
-- New user signup
-- User login/logout
-- User settings
-- Modern user interface
-- Bulma framework
-- Limited custom css/js
-- Easily customizable
+Imageguru helps you to see a picture when you can't see it with your eyes. 
+
+Make a photo with the app or upload a picture and hear the description what's in the foto!!
+
+# Preview Images
+<img scr="https://github.com/dirkh24/mmwml-week5/blob/master/media/Login.PNG">
+
+# Instructions on testing the webapp
+1. Go to https://imageguru.herokuapp.com/
+2. Login with the email admin@admin.com and password admin
+3. Choose a plan. For Payed Plan type in the stripe test data (email: admin@admin.com, cardnumber: 4242 4242 4242 4242, date: 01/21 and cvc 545)
+4. You're ready to upload your image and hear the result.
 
 ## Setup
 ``` 
