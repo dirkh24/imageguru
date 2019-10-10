@@ -163,3 +163,4 @@ htmlcov/
 .coverage.*
 *,cover
 /uploads/20180506_163157_001.jpg
+/db_test.py

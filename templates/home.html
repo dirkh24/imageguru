@@ -5,22 +5,26 @@
 <section class="hero is-primary is-bold is-small">
   <div class="hero-body">
     <div class="container has-text-centered">
-    <h2 class="title">Choose a Plan!</h2>
+        <h3>Imageguru helps you to see a picture when you can't see it with your eyes.</h3>
+        <p></p>
+        <h3>Make a photo with the app or upload a picture and hear the description what's in the foto!! </h3>
+        <p></p>
+        <h2 class="title">Choose your Plan!</h2>
 
     <div class="row">
-        <div class="column" style="background-color:#DCD7FF;">
+        <div class="column free_plan">
             <h2>Free plan</h2>
-            <p>• Analyze two images per day</p>
+            <p>• Analyze one image/minute</p>
             <p>• Analyze images up to 1 MB</p>
             <div>
                 <button type="button"  onClick="self.location.href='http://127.0.0.1:5000/analyze'" class="btn btn-primary btn-lg" id="btn-start">Start Analyzing!</button>
             </div>
         </div>
 
-        <div class="column" style="background-color:#DCD5DF;">
+        <div class="column premium_plan">
             <h2>Premium Plan</h2>
             <p>• Analyze unlimted images</p>
-            <p>• No limit for pictures</p>
+            <p>• No limit for pictures uploads.</p>
 
             <form action="{{ url_for('pay') }}" method="POST">
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

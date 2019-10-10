@@ -1,3 +1,11 @@
+.free_plan {
+  background-color: DarkGray;
+}
+
+.premium_plan {
+  background-color: DimGray;
+}
+
 .login-input {
   width: 130px;
 }

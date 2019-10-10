@@ -22,10 +22,8 @@ def session_scope():
     finally:
         s.close()
 
-
 def get_session():
     return sessionmaker(bind=tabledef.engine)()
-
 
 def get_user():
     username = session['username']
@@ -33,13 +31,11 @@ def get_user():
         user = s.query(tabledef.User).filter(tabledef.User.username.in_([username])).first()
         return user
 
-
 def add_user(username, password, email):
     with session_scope() as s:
         u = tabledef.User(username=username, password=password.decode('utf8'), email=email)
         s.add(u)
         s.commit()
-
 
 def change_user(**kwargs):
     username = session['username']
@@ -50,10 +46,8 @@ def change_user(**kwargs):
                 setattr(user, arg, val)
         s.commit()
 
-
 def hash_password(password):
     return bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
-
 
 def credentials_valid(username, password):
     with session_scope() as s:
@@ -63,25 +57,33 @@ def credentials_valid(username, password):
         else:
             return False
 
-
 def username_taken(username):
     with session_scope() as s:
         return s.query(tabledef.User).filter(tabledef.User.username.in_([username])).first()
 
-
-# set the boolean, when user has paid the plan
+# set the plan, when user has paid
 def set_plan(username):
     print("set_plan")
     with session_scope() as s:
         s.query(tabledef.User).filter(tabledef.User.username == username).update({tabledef.User.paid_plan: True}, synchronize_session=False)
         s.commit()
 
-
 # get the plan of the current user
 def get_plan(username):
     print("get_plan")
     with session_scope() as s:
-        #query = s.query(tabledef.User).filter(tabledef.User.username.in_([username])).all()
-        #query = s.query(tabledef.User).filter(tabledef.User.username == username)
         result = s.execute(select([tabledef.User.username, tabledef.User.paid_plan]).where(tabledef.User.username == username))
         return result.first()
+
+# save a prediction
+def save_prediction(username):
+
+    pass
+
+# return if the user is allowed to analyze a image
+def is_allowed(username):
+    # session.query(Ticker).order_by(desc('updated')).first()
+    # User.query.join(Skill).filter(Skill.skill == skill_name).all()
+    print("is_allowed")
+    with session_scope() as s:
+        s.query(tabledef.User).join(tabledef.Images).filter(tabledef.User.username == username)
