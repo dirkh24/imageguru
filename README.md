@@ -1,4 +1,4 @@
-<p align="center"><img src="media/imageguru2.png" width="128px"><p>
+<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/Imageguru2.PNG" width="128px"><p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
