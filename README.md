@@ -12,7 +12,7 @@ Make a photo with the app or upload a picture and hear the description what's in
 # Preview Images
 
 ## Login / Register for the service
-<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/login.png"><p>
+<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/Login.PNG"><p>
   
 ## Choose a plan
 <p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/Index.PNG"><p>
