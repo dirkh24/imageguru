@@ -15,8 +15,8 @@ Make a photo with the app or upload a picture and hear the description what's in
 # Instructions on testing the webapp
 1. Go to https://imageguru.herokuapp.com/
 2. Login with the email admin@admin.com and password admin
-3. Choose a plan. For Payed Plan type in the stripe test data (email: admin@admin.com, cardnumber: 4242 4242 4242 4242, date: 01/21 and cvc 545)
-4. You're ready to upload your image and hear the result.
+3. Choose a plan. For Premium Plan type in the stripe test data (email: admin@admin.com, cardnumber: 4242 4242 4242 4242, date: 01/21 and cvc 545)
+4. You're ready to upload your image, prress the predict button and hear the result.
 
 ## Setup
 ``` 
