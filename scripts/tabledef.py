@@ -9,10 +9,10 @@ from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 
 # Local
-SQLALCHEMY_DATABASE_URI = 'sqlite:///accounts.db'
+#SQLALCHEMY_DATABASE_URI = 'sqlite:///accounts.db'
 
 # Heroku
-#SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 Base = declarative_base()
 

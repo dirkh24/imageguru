@@ -45,8 +45,8 @@ model_to_load = "MobileNetV2"
 # https://github.com/heroku-python/flask-heroku
 # Heroku environment variable configurations for Flask.
 # Postgres Database on Heroku
-#from flask_heroku import Heroku
-#heroku = Heroku(app)
+from flask_heroku import Heroku
+heroku = Heroku(app)
 
 # the upload directory
 directory = "./uploads"
