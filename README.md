@@ -10,7 +10,22 @@ Imageguru helps you to see a picture when you can't see it with your eyes.
 Make a photo with the app or upload a picture and hear the description what's in the foto!!
 
 # Preview Images
-<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/Login.PNG"><p>
+
+## Login / Register for the service
+<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/login.png"><p>
+  
+## Choose a plan
+<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/Index.PNG"><p>
+  
+## Enter your pay data
+<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/pay.png"><p>
+
+## Upload a image
+<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/analyze_image.png"><p>
+
+## The Result
+<p align="center"><img src="https://github.com/dirkh24/mmwml-week5/blob/master/media/analyze_image_result.png"><p>
+
 
 # Instructions on testing the webapp
 1. Go to https://imageguru.herokuapp.com/
