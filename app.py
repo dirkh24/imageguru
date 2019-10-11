@@ -120,7 +120,7 @@ def login():
     user = helpers.get_user()
     return render_template('home.html', user=user, pub_key=pub_key, amount=stripe_amount)
 
-
+# -------- Logout ---------------------------------------------------------- #
 @app.route("/logout")
 def logout():
     print("logout")
