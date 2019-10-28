@@ -35,8 +35,8 @@ Make a photo with the app or upload a picture and hear the description what's in
 
 ## Setup
 ``` 
-git clone https://github.com/dirkh24/mmwml-week5
-cd mmwml-week5
+git clone https://github.com/dirkh24/imageguru
+cd imageguru
 pip install -r requirements.txt
 python app.py
 ```
